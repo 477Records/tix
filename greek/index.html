@@ -25,8 +25,7 @@
   h1 { font-size:26px; font-weight:700; margin-top:20px; letter-spacing:-.01em; }
   p.where { margin-top:4px; }
   p.when { color:var(--muted); margin-top:2px; }
-  p.left { color:var(--accent); font-weight:600; font-size:14px; margin-top:12px; min-height:1.4em; }
-  a.buy { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; padding:16px; border-radius:999px;
+  a.buy { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:24px; padding:16px; border-radius:999px;
           background:var(--accent); color:#120d0b; font-weight:700; font-size:17px; text-decoration:none; }
   a.buy svg { width:22px; height:22px; }
   p.price { color:var(--muted); font-size:14px; margin-top:10px; }
@@ -40,7 +39,7 @@
   fbq('track', 'PageView');
 </script>
 </head>
-<body data-release="greek" data-date="2027-06-26T20:00:00-07:00"
+<body data-release="greek"
       data-tickets="https://www.ticketmaster.com/two-feet-los-angeles-california-06-26-2027/event/0900652997806748">
   <div class="bg"></div>
   <main>
@@ -48,7 +47,6 @@
     <h1>Two Feet</h1>
     <p class="where">Greek Theatre · Los Angeles</p>
     <p class="when">Sat Jun 26, 2027 · 8 PM</p>
-    <p id="left" class="left"></p>
     <a id="buy" class="buy" href="#">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/></svg>
       Get tickets
@@ -56,6 +54,6 @@
     <p class="price">From $26 on Ticketmaster</p>
     <a id="web" class="web" href="#">Open Ticketmaster in browser instead</a>
   </main>
-  <script src="../tix.js?v=1"></script>
+  <script src="../tix.js?v=2"></script>
 </body>
 </html>

@@ -54,10 +54,6 @@
   });
   document.getElementById('web').href = web;
 
-  // Days left until the show.
-  var days = Math.ceil((new Date(cfg.date) - new Date()) / 864e5);
-  var left = document.getElementById('left');
-  if (left && days > 0) left.textContent = days === 1 ? 'Tomorrow night' : days + ' days to go';
 
   // Auto-open once per visit; coming back to the tab (bfcache) does not fire it again.
   var key = 'opened:' + cfg.release;
