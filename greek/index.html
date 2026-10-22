@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Two Feet · Greek Theatre · Jun 26</title>
+<meta name="description" content="Two Feet live at the Greek Theatre, Los Angeles. Sat Jun 26, 2027, 8 PM. Tickets on Ticketmaster.">
+<meta property="og:title" content="Two Feet · Greek Theatre LA">
+<meta property="og:description" content="Sat Jun 26, 2027 · 8 PM. Tickets on Ticketmaster.">
+<meta property="og:image" content="https://477records.github.io/tix/greek/art.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#120d0b">
+<style>
+  :root { --bg:#120d0b; --fg:#f6f2ee; --muted:#b8a99d; --accent:#ff6a2b; }
+  * { box-sizing:border-box; margin:0; }
+  html, body { height:100%; }
+  body { background:var(--bg); color:var(--fg); font:16px/1.4 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+         display:flex; align-items:center; justify-content:center; padding:24px 16px; overflow-x:hidden; }
+  .bg { position:fixed; inset:-40px; background:url(art.jpg) center/cover; filter:blur(40px) brightness(.4); z-index:-1; }
+  main { width:100%; max-width:380px; text-align:center; }
+  img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:6px; box-shadow:0 20px 60px rgba(0,0,0,.5); display:block; }
+  h1 { font-size:26px; font-weight:700; margin-top:20px; letter-spacing:-.01em; }
+  p.where { margin-top:4px; }
+  p.when { color:var(--muted); margin-top:2px; }
+  p.left { color:var(--accent); font-weight:600; font-size:14px; margin-top:12px; min-height:1.4em; }
+  a.buy { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; padding:16px; border-radius:999px;
+          background:var(--accent); color:#120d0b; font-weight:700; font-size:17px; text-decoration:none; }
+  a.buy svg { width:22px; height:22px; }
+  p.price { color:var(--muted); font-size:14px; margin-top:10px; }
+  a.web { display:inline-block; margin-top:16px; color:var(--muted); font-size:14px; }
+</style>
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+  s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2151286498933317');
+  fbq('track', 'PageView');
+</script>
+</head>
+<body data-release="greek" data-date="2027-06-26T20:00:00-07:00"
+      data-tickets="https://www.ticketmaster.com/two-feet-los-angeles-california-06-26-2027/event/0900652997806748">
+  <div class="bg"></div>
+  <main>
+    <a id="art" href="#"><img src="art.jpg" alt="Two Feet" width="1200" height="675"></a>
+    <h1>Two Feet</h1>
+    <p class="where">Greek Theatre · Los Angeles</p>
+    <p class="when">Sat Jun 26, 2027 · 8 PM</p>
+    <p id="left" class="left"></p>
+    <a id="buy" class="buy" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/></svg>
+      Get tickets
+    </a>
+    <p class="price">From $26 on Ticketmaster</p>
+    <a id="web" class="web" href="#">Open Ticketmaster in browser instead</a>
+  </main>
+  <script src="../tix.js?v=1"></script>
+</body>
+</html>
