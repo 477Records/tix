@@ -20,9 +20,23 @@
   var androidIntent = 'intent://' + url.host + url.pathname + url.search +
     '#Intent;scheme=https;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
 
+  // InitiateCheckout counts once per visit, so the auto-open plus a tap on the same visit is one checkout.
+  // TicketClick still fires every time, with its method, for the raw count.
+  var checkoutKey = 'checkout:' + cfg.release;
+  var checkoutSent = false;
+  function firstCheckout() {
+    if (checkoutSent) return false;
+    checkoutSent = true;
+    try {
+      if (sessionStorage.getItem(checkoutKey) === '1') return false;
+      sessionStorage.setItem(checkoutKey, '1');
+    } catch (e) {}
+    return true;
+  }
+
   function track(how) {
     if (window.fbq) {
-      fbq('track', 'InitiateCheckout', { content_name: cfg.release, content_category: 'tickets' });
+      if (firstCheckout()) fbq('track', 'InitiateCheckout', { content_name: cfg.release, content_category: 'tickets' });
       fbq('trackCustom', 'TicketClick', { method: how, inapp: inApp, release: cfg.release });
     }
   }
