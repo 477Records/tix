@@ -1,6 +1,6 @@
 // Sends ticket buyers from in-app browsers (Instagram, Facebook, TikTok) to Ticketmaster in the real
 // browser or the Ticketmaster app, where they are signed in and Apple Pay / saved cards work.
-// Every visitor sees the same page; the jump runs on top of it.
+// Every visitor sees the same page; the jump happens when they tap.
 (function () {
   var cfg = document.body.dataset;
   var ua = navigator.userAgent || '';
@@ -20,7 +20,7 @@
   var androidIntent = 'intent://' + url.host + url.pathname + url.search +
     '#Intent;scheme=https;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
 
-  // InitiateCheckout counts once per visit, so the auto-open plus a tap on the same visit is one checkout.
+  // InitiateCheckout counts once per visit, so several taps on the same visit are one checkout.
   // TicketClick still fires every time, with its method, for the raw count.
   var checkoutKey = 'checkout:' + cfg.release;
   var checkoutSent = false;
@@ -69,9 +69,6 @@
   document.getElementById('web').href = web;
 
 
-  // Auto-open once per visit; coming back to the tab (bfcache) does not fire it again.
-  var key = 'opened:' + cfg.release;
-  var seen = false;
-  try { seen = sessionStorage.getItem(key) === '1'; sessionStorage.setItem(key, '1'); } catch (e) {}
-  if (!seen && (isAndroid || (isIOS && isInstagram))) setTimeout(function () { open('auto'); }, 300);
+  // No auto-open: the visitor sees the page and taps. A tap is the only thing that counts as a checkout,
+  // so Meta optimises for people who chose to go to Ticketmaster, not for everyone who loaded the page.
 })();
