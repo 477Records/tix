@@ -35,9 +35,14 @@
   }
 
   function track(how) {
+    var first = firstCheckout();
     if (window.fbq) {
-      if (firstCheckout()) fbq('track', 'InitiateCheckout', { content_name: cfg.release, content_category: 'tickets' });
+      if (first) fbq('track', 'InitiateCheckout', { content_name: cfg.release, content_category: 'tickets' });
       fbq('trackCustom', 'TicketClick', { method: how, inapp: inApp, release: cfg.release });
+    }
+    // Google Ads conversion for the same tap, once per visit. Only pages that set data-gads-checkout send it.
+    if (first && window.gtag && cfg.gadsCheckout) {
+      gtag('event', 'conversion', { send_to: cfg.gadsCheckout });
     }
   }
 
