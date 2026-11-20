@@ -44,6 +44,10 @@
     if (first && window.gtag && cfg.gadsCheckout) {
       gtag('event', 'conversion', { send_to: cfg.gadsCheckout });
     }
+    // TikTok pixel, same once-per-visit rule. Only pages that load the TikTok pixel send it.
+    if (first && window.ttq && window.ttq.track) {
+      ttq.track('InitiateCheckout', { content_name: cfg.release, content_type: 'product', content_id: cfg.release });
+    }
   }
 
   function open(how) {
