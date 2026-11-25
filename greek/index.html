@@ -33,6 +33,8 @@
   p.seller { color:var(--muted); font-size:12px; margin-top:4px; opacity:.85; }
   p.price { color:var(--muted); font-size:14px; margin-top:10px; }
   a.web { display:inline-block; margin-top:16px; color:var(--muted); font-size:14px; }
+  p.gift { margin-top:22px; font-size:14px; }
+  p.gift a { color:var(--muted); text-underline-offset:3px; }
   p.legal { margin-top:28px; font-size:11px; color:var(--muted); opacity:.7; }
   p.legal a { color:inherit; }
 </style>
@@ -76,6 +78,7 @@
     <p class="price">From $26 on Ticketmaster</p>
     <p class="seller">Tickets are sold by Ticketmaster. This page is run by 477 Records, Two Feet's label.</p>
     <a id="web" class="web" href="#">Open Ticketmaster in browser instead</a>
+    <p class="gift"><a href="gift/" onclick="if(window.fbq)fbq('trackCustom','GiftCardOpen')">Giving these as a gift? Print a card to go with them.</a></p>
     <p class="legal">This page uses cookies, the Meta pixel, the Google tag and the TikTok pixel to measure ads. <a href="https://chiseled-bridge-510.notion.site/477-privacy-policy-3dfcd346169080349848d2c3b082f198" target="_blank" rel="noopener">Privacy</a></p>
   </main>
   <script src="../tix.js?v=6"></script>
