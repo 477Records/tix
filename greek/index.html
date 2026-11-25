@@ -33,8 +33,10 @@
   p.seller { color:var(--muted); font-size:12px; margin-top:4px; opacity:.85; }
   p.price { color:var(--muted); font-size:14px; margin-top:10px; }
   a.web { display:inline-block; margin-top:16px; color:var(--muted); font-size:14px; }
-  p.gift { margin-top:22px; font-size:14px; }
-  p.gift a { color:var(--muted); text-underline-offset:3px; }
+  a.giftbtn { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; padding:14px 16px; border-radius:999px;
+              border:1.5px solid rgba(246,242,238,.55); color:var(--fg); font-size:16px; font-weight:600; text-decoration:none; background:rgba(18,13,11,.35); }
+  a.giftbtn:hover, a.giftbtn:focus-visible { border-color:var(--fg); background:rgba(18,13,11,.55); }
+  a.giftbtn svg { width:20px; height:20px; flex:none; }
   p.legal { margin-top:28px; font-size:11px; color:var(--muted); opacity:.7; }
   p.legal a { color:inherit; }
 </style>
@@ -77,8 +79,11 @@
     </a>
     <p class="price">From $26 on Ticketmaster</p>
     <p class="seller">Tickets are sold by Ticketmaster. This page is run by 477 Records, Two Feet's label.</p>
+    <a class="giftbtn" href="gift/" onclick="if(window.fbq)fbq('trackCustom','GiftCardOpen')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8c-1.5 0-4-.6-4-2.6C8 4 9 3.4 9.8 3.4 11.4 3.4 12 6 12 8zm0 0c1.5 0 4-.6 4-2.6C16 4 15 3.4 14.2 3.4 12.6 3.4 12 6 12 8z"/></svg>
+      Giving them as a gift? Print a card
+    </a>
     <a id="web" class="web" href="#">Open Ticketmaster in browser instead</a>
-    <p class="gift"><a href="gift/" onclick="if(window.fbq)fbq('trackCustom','GiftCardOpen')">Giving these as a gift? Print a card to go with them.</a></p>
     <p class="legal">This page uses cookies, the Meta pixel, the Google tag and the TikTok pixel to measure ads. <a href="https://chiseled-bridge-510.notion.site/477-privacy-policy-3dfcd346169080349848d2c3b082f198" target="_blank" rel="noopener">Privacy</a></p>
   </main>
   <script src="../tix.js?v=6"></script>
