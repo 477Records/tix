@@ -6,98 +6,103 @@
 <meta name="robots" content="noindex">
 <title>A gift for you · Two Feet at the Greek</title>
 <style>
-  /* A 5×7 keepsake card that prints light: cream paper, black ink, one red band. */
-  :root { --paper:#f4f0e6; --ink:#17140f; --soft:#6f685c; --red:#b3261a; --desk:#e4dfd3; }
+  /* A ticket-shaped gift card: picture, details, tear-off stub. Wide on desktop and paper, stacked on phones. */
+  :root { --paper:#fbfaf6; --ink:#15130f; --soft:#6d675c; --desk:#2b2926; --line:rgba(21,19,15,.28); }
   * { box-sizing:border-box; margin:0; }
-  body { background:var(--desk); color:var(--ink); font:16px/1.45 "Helvetica Neue", Helvetica, Arial, sans-serif;
-         padding:28px 16px 56px; -webkit-font-smoothing:antialiased; }
+  body { background:var(--desk); color:#e9e5dc; font:16px/1.45 "Helvetica Neue", Helvetica, Arial, sans-serif; padding:44px 20px 64px; -webkit-font-smoothing:antialiased; }
 
-  /* every size inside the card is a share of the card's width, so screen and print match */
-  .card { container-type:inline-size; position:relative; width:100%; max-width:5in; aspect-ratio:5/7; margin:0 auto;
-          background:var(--paper); box-shadow:0 1px 0 rgba(23,20,15,.08), 0 18px 40px rgba(23,20,15,.18); }
-  .in { position:absolute; inset:5cqw; border:.35cqw solid var(--ink); display:flex; flex-direction:column; }
+  .wrap { container-type:inline-size; width:100%; max-width:9.2in; margin:0 auto; }
+  /* --u is one hundredth of the ticket's width, so every size scales with it */
+  .ticket { --u:1cqw; --bars:to bottom; display:flex; width:100%; aspect-ratio:7.2/2.7; background:var(--paper); color:var(--ink);
+            box-shadow:0 24px 60px rgba(0,0,0,.45); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .pic { flex:none; width:37.5%; }
+  .pic img { display:block; width:100%; height:100%; object-fit:cover; }
 
-  .top { display:flex; justify-content:space-between; padding:2.6cqw 3.4cqw; font-size:3cqw; border-bottom:.35cqw solid var(--ink); }
-  .top b { font-weight:700; letter-spacing:-.01em; }
+  .mid { flex:1; min-width:0; display:flex; flex-direction:column; padding:calc(var(--u)*2.3) calc(var(--u)*2.6) calc(var(--u)*2.1); }
+  .brand { font-size:calc(var(--u)*1.75); font-weight:700; letter-spacing:-.02em; }
+  .big { margin:auto 0; font-size:calc(var(--u)*4.35); font-weight:400; line-height:1.14; letter-spacing:-.035em; text-transform:uppercase; white-space:nowrap; }
+  .big span { display:block; }
+  .facts { display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:calc(var(--u)*1.6); font-size:calc(var(--u)*1.12); line-height:1.3; }
+  .facts i { display:block; font-style:normal; font-weight:500; }
+  .facts b { display:block; font-weight:400; text-transform:uppercase; letter-spacing:.01em; color:var(--soft); }
+  .facts input { display:block; width:100%; border:0; border-bottom:1px solid var(--line); border-radius:0; outline:0; background:transparent; color:var(--ink); padding:0 0 .15em;
+            font:500 calc(var(--u)*1.45)/1.25 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing:-.01em; text-transform:uppercase; }
+  .facts input::placeholder { color:rgba(21,19,15,.3); font-weight:400; text-transform:none; }
+  .facts input:focus-visible { border-bottom-color:var(--ink); }
 
-  .head { padding:5cqw 3.4cqw 0; }
-  .lead { font-size:4.2cqw; color:var(--soft); letter-spacing:-.01em; }
-  .name { font-size:21.4cqw; font-weight:700; line-height:.86; letter-spacing:-.07em; margin:1.6cqw 0 0 -.045em; white-space:nowrap; }
-  .at { font-size:9.4cqw; font-weight:700; line-height:1; letter-spacing:-.045em; margin-top:2.4cqw; }
+  .stub { flex:none; width:19.5%; display:flex; border-left:1.5px dashed var(--line); padding:calc(var(--u)*2.1) calc(var(--u)*1.7) calc(var(--u)*2.1) calc(var(--u)*1.5); gap:calc(var(--u)*1.1); }
+  .words { flex:1; display:flex; flex-direction:row-reverse; justify-content:space-between; gap:calc(var(--u)*.9); writing-mode:vertical-rl; font-size:calc(var(--u)*1.02); line-height:1.3; }
+  .words i { display:block; font-style:normal; font-weight:500; }
+  .words b { display:block; white-space:nowrap; font-weight:400; text-transform:uppercase; letter-spacing:.01em; color:var(--soft); }
+  .mark { writing-mode:vertical-rl; align-self:flex-end; font-size:calc(var(--u)*1.2); font-weight:700; letter-spacing:-.02em; white-space:nowrap; }
+  .bars { flex:none; width:calc(var(--u)*5.6); background:linear-gradient(var(--bars), var(--ink) 0.00% 1.80%, transparent 1.80% 2.30%, var(--ink) 2.30% 3.50%, transparent 3.50% 4.00%, var(--ink) 4.00% 5.80%, transparent 5.80% 7.20%, var(--ink) 7.20% 8.00%, transparent 8.00% 8.50%, var(--ink) 8.50% 9.30%, transparent 9.30% 10.30%, var(--ink) 10.30% 12.10%, transparent 12.10% 12.90%, var(--ink) 12.90% 13.40%, transparent 13.40% 14.20%, var(--ink) 14.20% 15.00%, transparent 15.00% 15.50%, var(--ink) 15.50% 16.00%, transparent 16.00% 16.50%, var(--ink) 16.50% 17.00%, transparent 17.00% 18.00%, var(--ink) 18.00% 18.80%, transparent 18.80% 19.30%, var(--ink) 19.30% 21.10%, transparent 21.10% 22.10%, var(--ink) 22.10% 22.90%, transparent 22.90% 24.30%, var(--ink) 24.30% 25.50%, transparent 25.50% 26.90%, var(--ink) 26.90% 27.70%, transparent 27.70% 28.20%, var(--ink) 28.20% 29.00%, transparent 29.00% 30.00%, var(--ink) 30.00% 30.80%, transparent 30.80% 31.60%, var(--ink) 31.60% 32.10%, transparent 32.10% 33.10%, var(--ink) 33.10% 33.90%, transparent 33.90% 34.70%, var(--ink) 34.70% 35.90%, transparent 35.90% 36.90%, var(--ink) 36.90% 39.50%, transparent 39.50% 40.50%, var(--ink) 40.50% 41.70%, transparent 41.70% 42.20%, var(--ink) 42.20% 43.40%, transparent 43.40% 44.20%, var(--ink) 44.20% 44.70%, transparent 44.70% 46.10%, var(--ink) 46.10% 47.90%, transparent 47.90% 48.40%, var(--ink) 48.40% 49.60%, transparent 49.60% 50.60%, var(--ink) 50.60% 51.10%, transparent 51.10% 51.60%, var(--ink) 51.60% 52.40%, transparent 52.40% 53.20%, var(--ink) 53.20% 54.00%, transparent 54.00% 54.50%, var(--ink) 54.50% 56.30%, transparent 56.30% 57.70%, var(--ink) 57.70% 58.20%, transparent 58.20% 58.70%, var(--ink) 58.70% 61.30%, transparent 61.30% 62.10%, var(--ink) 62.10% 63.90%, transparent 63.90% 64.90%, var(--ink) 64.90% 66.10%, transparent 66.10% 67.10%, var(--ink) 67.10% 68.30%, transparent 68.30% 68.80%, var(--ink) 68.80% 69.60%, transparent 69.60% 70.60%, var(--ink) 70.60% 71.80%, transparent 71.80% 72.30%, var(--ink) 72.30% 73.50%, transparent 73.50% 74.00%, var(--ink) 74.00% 74.80%, transparent 74.80% 76.20%, var(--ink) 76.20% 77.00%, transparent 77.00% 77.50%, var(--ink) 77.50% 78.00%, transparent 78.00% 79.00%, var(--ink) 79.00% 79.80%, transparent 79.80% 80.80%, var(--ink) 80.80% 82.00%, transparent 82.00% 82.80%, var(--ink) 82.80% 83.60%, transparent 83.60% 85.00%, var(--ink) 85.00% 85.50%, transparent 85.50% 86.00%, var(--ink) 86.00% 87.80%, transparent 87.80% 88.60%, var(--ink) 88.60% 89.10%, transparent 89.10% 89.90%, var(--ink) 89.90% 92.50%, transparent 92.50% 93.50%, var(--ink) 93.50% 94.30%, transparent 94.30% 95.30%, var(--ink) 95.30% 95.80%, transparent 95.80% 96.30%, var(--ink) 96.30% 97.10%, transparent 97.10% 97.60%, var(--ink) 97.60% 98.10%, transparent 98.10% 98.60%, var(--ink) 98.60% 99.10%, transparent 99.10% 100.00%); }
 
-  .date { margin:5cqw 3.4cqw 0; background:var(--red); color:var(--paper); display:flex; justify-content:space-between; align-items:baseline;
-          padding:2cqw 3cqw 2.4cqw; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  .date b { font-size:12.4cqw; line-height:1; letter-spacing:-.05em; }
-  .date span { font-size:3.3cqw; text-align:right; line-height:1.25; }
-
-  .facts { display:grid; grid-template-columns:1.5fr 1fr 1fr; margin:3.4cqw 3.4cqw 0; font-size:3.1cqw; line-height:1.3; }
-  .facts div { border-left:.25cqw solid var(--ink); padding:.2cqw 0 .2cqw 1.8cqw; }
-  .facts div:first-child { border-left:0; padding-left:0; }
-  .facts i { display:block; font-style:normal; color:var(--soft); }
-  .facts b { font-weight:700; letter-spacing:-.01em; }
-
-  /* tear line with a notch at each edge, like a ticket stub */
-  .tear { position:relative; margin-top:auto; border-top:.35cqw dashed var(--ink); }
-  .tear::before, .tear::after { content:""; position:absolute; top:-2.2cqw; width:4cqw; height:4cqw; border-radius:50%;
-          background:var(--desk); border:.35cqw solid var(--ink); }
-  .tear::before { left:-2.2cqw; clip-path:inset(0 0 0 50%); }
-  .tear::after { right:-2.2cqw; clip-path:inset(0 50% 0 0); }
-
-  .stub { padding:3cqw 3.4cqw 3.2cqw; }
-  .row { display:flex; align-items:baseline; gap:2.4cqw; border-bottom:.25cqw solid var(--ink); padding:2.6cqw 0 1.1cqw; font-size:3.1cqw; }
-  .row label { color:var(--soft); flex:none; width:8.5cqw; }
-  .row input { flex:1; min-width:0; border:0; outline:0; background:transparent; color:var(--ink); padding:0;
-          font:700 5.2cqw/1.1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing:-.03em; }
-  .row input::placeholder { color:rgba(23,20,15,.22); font-weight:400; font-size:3.4cqw; letter-spacing:0; }
-  .note { margin-top:2.4cqw; font-size:2.35cqw; line-height:1.35; color:var(--soft); }
-
-  .tools { max-width:5in; margin:26px auto 0; text-align:center; font-size:15px; color:#4d473d; }
-  .tools p + p { margin-top:14px; font-size:14px; }
-  button { margin-top:14px; padding:14px 30px; border:0; border-radius:999px; background:var(--ink); color:var(--paper);
+  .tools { max-width:9.2in; margin:30px auto 0; text-align:center; font-size:15px; color:#c9c4b9; }
+  .tools p + p { margin-top:14px; font-size:14px; color:#a39e93; }
+  button { margin-top:16px; padding:14px 30px; border:0; border-radius:999px; background:var(--paper); color:var(--ink);
            font:700 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing:-.01em; cursor:pointer; }
-  button:hover { background:#2e2820; }
-  button:focus-visible, .tools a:focus-visible, .row input:focus-visible { outline:2px solid var(--red); outline-offset:3px; }
+  button:hover { background:#fffdf7; }
+  button:focus-visible, .tools a:focus-visible { outline:2px solid #fffdf7; outline-offset:3px; }
   .tools a { color:inherit; text-underline-offset:3px; }
+  .cut { display:none; }
 
-  /* prints on ordinary letter or A4 paper: the card sits in the middle with a hairline to cut along */
+  /* phones: the ticket stands up, picture on top, stub along the bottom */
+  @media (max-width:640px) {
+    body { padding:22px 16px 48px; }
+    .wrap { max-width:420px; }
+    .ticket { --u:2.75cqw; --bars:to right; flex-direction:column; aspect-ratio:auto; }
+    .pic { width:100%; aspect-ratio:1; }
+    .mid { padding:calc(var(--u)*2.2) calc(var(--u)*2.2) calc(var(--u)*2.4); }
+    .big { margin:calc(var(--u)*2.4) 0 calc(var(--u)*2.8); font-size:calc(var(--u)*3.85); }
+    .facts { grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.8) calc(var(--u)*1.6); font-size:calc(var(--u)*1.25); }
+    .facts div:first-child { grid-column:1 / -1; }
+    .facts input { font-size:16px; }
+    .stub { width:100%; flex-direction:column; border-left:0; border-top:1.5px dashed var(--line); padding:calc(var(--u)*2) calc(var(--u)*2.2) calc(var(--u)*2.2); gap:calc(var(--u)*1.6); }
+    .words { writing-mode:horizontal-tb; flex-direction:row; justify-content:space-between; font-size:calc(var(--u)*1.2); }
+    .words div:last-child { display:none; }
+    .mark { display:none; }
+    .bars { width:100%; height:calc(var(--u)*6.5); }
+    .note-m { display:block !important; margin-top:calc(var(--u)*-.4); font-size:calc(var(--u)*1.1); color:var(--soft); }
+  }
+  .note-m { display:none; }
+
+  /* prints wide on ordinary letter or A4 paper, with a hairline to cut along */
   @page { margin:.5in; }
   @media print {
-    body { background:#fff; padding:0; }
+    body { background:#fff; color:#000; padding:0; }
     .tools { display:none; }
-    .card { width:5in; max-width:none; height:7in; margin:.6in auto 0; box-shadow:none; outline:.5pt solid #b9b3a6; outline-offset:0;
-            -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-    .tear::before, .tear::after { background:var(--paper); }
-    .row input::placeholder { color:transparent; }
-    .cut { display:block !important; }
+    .wrap { width:7.2in; max-width:none; margin:.7in auto 0; }
+    .ticket { --u:1cqw; --bars:to bottom; flex-direction:row; aspect-ratio:7.2/2.7; box-shadow:none; outline:.5pt solid #b5b0a4; }
+    .facts input::placeholder { color:transparent; }
+    .cut { display:block; text-align:center; font-size:8pt; color:#8d8779; margin-top:10pt; }
   }
-  .cut { display:none; text-align:center; font-size:8pt; color:#8d8779; margin-top:10pt; }
 </style>
 </head>
 <body>
-  <main>
-    <div class="card">
-      <div class="in">
-        <div class="top"><span>A gift for you</span><b>Los Angeles</b></div>
-        <div class="head">
-          <p class="lead">you&rsquo;re going to see</p>
-          <h1 class="name">Two Feet</h1>
-          <p class="at">live at the Greek</p>
-        </div>
-        <div class="date"><b>06.26.27</b><span>Saturday<br>June 26, 2027</span></div>
+  <main class="wrap">
+    <div class="ticket">
+      <div class="pic"><img src="art.jpg" width="1000" height="1000" alt="Two Feet, First Steps artwork"></div>
+      <div class="mid">
+        <p class="brand">A gift for you</p>
+        <h1 class="big"><span>Two Feet</span><span>Live at the Greek</span><span>06.26.2027</span></h1>
         <div class="facts">
-          <div><i>Where</i><b>Greek Theatre</b></div>
-          <div><i>Doors</i><b>6:30 PM</b></div>
-          <div><i>Show</i><b>8:00 PM</b></div>
-        </div>
-        <div class="tear"></div>
-        <div class="stub">
-          <div class="row"><label for="to">To</label><input id="to" type="text" maxlength="28" autocomplete="off" placeholder="type a name, or leave blank to write it"></div>
-          <div class="row"><label for="from">From</label><input id="from" type="text" maxlength="28" autocomplete="off" placeholder="type a name, or leave blank to write it"></div>
-          <p class="note">This card is not a ticket. Your tickets are with the person who gave you this.</p>
+          <div><i>Location</i><b>Greek Theatre<br>Los Angeles, CA</b></div>
+          <div><i><label for="to">To</label></i><input id="to" type="text" maxlength="22" autocomplete="off" placeholder="name"></div>
+          <div><i><label for="from">From</label></i><input id="from" type="text" maxlength="22" autocomplete="off" placeholder="name"></div>
         </div>
       </div>
+      <div class="stub">
+        <div class="words">
+          <div><i>Gift card</i><b>Not valid for entry</b></div>
+          <div><i>Saturday</i><b>Doors 6:30 PM<br>Show 8:00 PM</b></div>
+          <div><i>Your tickets</i><b>Are with the person<br>who gave you this</b></div>
+        </div>
+        <p class="note-m">Your tickets are with the person who gave you this.</p>
+        <p class="mark">Two Feet</p>
+        <div class="bars" role="presentation"></div>
+      </div>
     </div>
-    <p class="cut">Cut along the line. The card is 5 × 7 inches.</p>
+    <p class="cut">Cut along the line.</p>
   </main>
   <div class="tools">
     <p>Add the names, print it, cut it out, and put it under the tree.</p>
